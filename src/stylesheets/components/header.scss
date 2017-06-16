@@ -1,0 +1,11 @@
+@import '../settings/colors';
+
+.main-header {
+  background-color: $white; box-shadow: 0 2px 3px $grey;
+  text-align: center;
+
+  .logo {
+    display: inline-block;
+    font-size: 2.5em; color: $blue;
+  }
+}
