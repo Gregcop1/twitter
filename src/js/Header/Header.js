@@ -5,7 +5,10 @@ const Header = () => (
     <header className="main-header">
         <div className="container">
             <nav></nav>
-            <p className="logo fa fa-twitter" />
+            <p className="logo">
+                <i className="fa fa-twitter fa-2x fa-fw" />
+                {false && <i className="fa fa-spinner fa-pulse fa-2x fa-fw" />}
+            </p>
             <search />
         </div>
     </header>

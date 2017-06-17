@@ -3,4 +3,9 @@
 
 .main-container {
   padding: $page-padding 0;
+
+  .column { display: inline-block; vertical-align: top; }
+  .column + .column { margin-left: $page-padding; }
+  .aside-primary { width: 20%; }
+  .main-content { width: 58%; }
 }
