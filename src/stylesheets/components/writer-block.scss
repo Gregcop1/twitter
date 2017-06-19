@@ -3,10 +3,10 @@
 @import '../settings/fonts';
 
 .block.writer-block {
-  position: relative; background: $bright-blue; border-bottom: 1px solid $grey;
+  position: relative; margin-bottom: 0; background: $bright-blue;
 
   input[type="text"], textarea {
-    border: 1px solid $blue; border-radius: 20px; padding: 10px 20px; width: 100%;
+    border: 1px solid $blue; border-radius: 30px; padding: 10px 20px; width: 100%;
     font-size: 1.5em; line-height: 1.5;
   }
   input[type="text"] { color: $blue; }

@@ -4,11 +4,11 @@
 /// @group Settings
 ///
 ////
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
 /// Font fomily
-$arial: Arial, sans-serif;
-$font: $arial;
+$roboto: 'Roboto', Arial, sans-serif;
+$font: $roboto;
 $fontAwesome: 'FontAwesome';
 
 /// Fonts weight

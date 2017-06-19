@@ -2,7 +2,7 @@ import React from 'react';
 import { branch, compose, renderComponent, renderNothing, withProps, withState } from 'recompose';
 import Input from './Input';
 import Textarea from './Textarea';
-import '../../stylesheets/components/writer-block.css';
+import '../../../stylesheets/components/writer-block.css';
 
 const input = ({ toggleFold, value }) => <Input value={value} onClick={() => toggleFold(x => (!x))} />;
 const textarea = ({ value }) => <Textarea placeholder={value} />;

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../stylesheets/components/short-profile.css';
+import '../../../stylesheets/components/short-profile.css';
 
 const ShortProfile = () => (
     <div className="block profile-block">
