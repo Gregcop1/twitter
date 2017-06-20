@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './Nav';
+import Logo from './Logo';
 import '../../../stylesheets/components/header.css';
 
 const Header = () => (
@@ -7,8 +8,7 @@ const Header = () => (
         <div className="container">
             <Nav />
             <p className="logo">
-                <i className="fa fa-twitter fa-2x fa-fw" />
-                {false && <i className="fa fa-spinner fa-pulse fa-2x fa-fw" />}
+                <Logo clssName="logo" />
             </p>
             <search />
         </div>
