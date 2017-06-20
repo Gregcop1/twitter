@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const ActionBar = ({ length }) => {
+const ActionBar = ({ length, submit }) => {
     const MAX_LENGTH = 140,
         remainingChars = MAX_LENGTH - length,
         isBelowEnd = 0 > remainingChars,
@@ -23,7 +23,9 @@ const ActionBar = ({ length }) => {
                         'writer-actions-counter--alert': isBelowEnd,
                     }
                 )}>{ remainingChars }</span>
-                <button className={classnames('writer-actions-submit', {'writer-actions-submit--disabled': !isTweetable})}>
+                <button
+                    onClick={submit}
+                    className={classnames('writer-actions-submit', {'writer-actions-submit--disabled': !isTweetable})}>
                     Tweeter
                 </button>
             </span>

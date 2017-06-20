@@ -9,7 +9,14 @@
     border: 1px solid $blue; border-radius: 30px; padding: 10px 20px; width: 100%;
     font-size: 1.5em; line-height: 1.5;
   }
-  input[type="text"] { color: $blue; }
+  input[type="text"] {
+    padding-left: 50px;
+    color: $blue;
+  }
+  .writer-block--fold .avatar {
+    position: absolute; top: 50%; left: 12px; border-radius: 22px; width: 42px; height: 42px;
+    transform: translateY(-50%);
+  }
   .writer-block--fold .fa {
     position: absolute; top: 50%; right: 30px; transform: translateY(-50%);
     font-size: 1.5em; color: $blue;
