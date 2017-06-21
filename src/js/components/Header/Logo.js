@@ -1,13 +1,22 @@
 import React from 'react';
-import { branch, renderComponent, renderNothing } from 'recompose';
+import { branch, compose, renderComponent, renderNothing } from 'recompose';
+import { connect } from 'react-redux';
 
-const TwitterLogo = () => <i className="fa fa-twitter fa-2x fa-fw" />;
-const Spinner = () => <i className="fa fa-spinner fa-pulse fa-2x fa-fw" />;
+const TwitterLogo = () => <i className="fa fa-twitter fa-fw" />;
+const Spinner = () => <i className="fa fa-spinner fa-pulse fa-fw" />;
 
 const withLogo = branch(
-    () => false,
+    ({ loading }) => (loading),
     renderComponent(Spinner),
     renderComponent(TwitterLogo)
 );
 
-export default withLogo(renderNothing());
+const mapStateToProps = ({ tweets }) => ({ loading: tweets.loading });
+const withPreloader = connect(mapStateToProps);
+
+const enhance = compose(
+    withPreloader,
+    withLogo
+);
+
+export default enhance(renderNothing());

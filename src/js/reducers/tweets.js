@@ -1,5 +1,4 @@
-import { ADD_TWEET, FETCH_TWEETS_SUCCESS } from '../actions';
-import tweetsHelper from '../helpers/tweets';
+import { ADD_TWEET, FETCH_TWEETS, FETCH_TWEETS_SUCCESS } from '../actions';
 
 const defaultValue = {
     author: {
@@ -7,7 +6,8 @@ const defaultValue = {
         email: 'gregcop1@gmail.com',
         account: '@gregcop1'
     },
-    items: tweetsHelper.generateTweets(20),
+    items: [],
+    loading: false,
 };
 
 const tweetsReducers = (state = defaultValue, action) => {
@@ -24,9 +24,15 @@ const tweetsReducers = (state = defaultValue, action) => {
                     ...state.items
                 ]
             };
+        case FETCH_TWEETS:
+            return {
+                ...state,
+                loading: true
+            };
         case FETCH_TWEETS_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 items: [
                     ...state.items,
                     ...action.response

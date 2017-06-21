@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import moment from 'moment';
 import 'moment/locale/fr';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -9,14 +10,22 @@ import Home from './js/components/Home/Home';
 import MyTweets from './js/components/MyTweets/MyTweets';
 import reducers from './js/reducers';
 import registerServiceWorker from './registerServiceWorker';
+import mySaga from './js/sagas/sagas';
 import './stylesheets/index.css';
 
+// defines moment locale
 moment.locale('fr');
+
+// create the sagas middleware
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
     reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(sagaMiddleware)
 );
+
+sagaMiddleware.run(mySaga);
 
 ReactDOM.render(
     <BrowserRouter>
