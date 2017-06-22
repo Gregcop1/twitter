@@ -11,7 +11,9 @@ import MyTweets from './js/components/MyTweets/MyTweets';
 import reducers from './js/reducers';
 import registerServiceWorker from './registerServiceWorker';
 import mySaga from './js/sagas/sagas';
+import Header from './js/components/Header/Header';
 import './stylesheets/index.css';
+import './stylesheets/components/main-layout.css';
 
 // defines moment locale
 moment.locale('fr');
@@ -31,8 +33,13 @@ ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
             <div>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/my-tweets" component={MyTweets}/>
+                <Header />
+                <div className="main-container">
+                    <div className="container">
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/my-tweets" component={MyTweets}/>
+                    </div>
+                </div>
             </div>
         </Provider>
     </BrowserRouter>,

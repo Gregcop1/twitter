@@ -4,7 +4,10 @@ const defaultValue = {
     author: {
         name: 'Grégory Copin',
         email: 'gregcop1@gmail.com',
-        account: '@gregcop1'
+        account: '@gregcop1',
+        tweetCount: 500 + Math.ceil(Math.random() * 200),
+        subscriber: Math.ceil(Math.random() * 200),
+        subscription: Math.ceil(Math.random() * 200)
     },
     items: [],
     loading: false,
@@ -15,6 +18,10 @@ const tweetsReducers = (state = defaultValue, action) => {
         case ADD_TWEET:
             return {
                 ...state,
+                author: {
+                    ...state.author,
+                    tweetCount: state.author.tweetCount + 1
+                },
                 items: [
                     {
                         author: state.author,

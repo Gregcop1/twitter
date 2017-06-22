@@ -5,7 +5,7 @@ import Textarea from './Textarea';
 import '../../../stylesheets/components/writer-block.css';
 
 const input = ({ toggleFold, value }) => <Input value={value} onClick={() => toggleFold(x => (!x))} />;
-const textarea = ({ value }) => <Textarea placeholder={value} />;
+const textarea = ({ toggleFold, value }) => <Textarea placeholder={value} onLeave={() => toggleFold(x => (!x))} />;
 
 const withToggle = withState('fold', 'toggleFold', true);
 const withPlaceholder = withProps(() => ({ value: 'Quoi de neuf ?' }))

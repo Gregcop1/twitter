@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../Header/Header';
-import '../../../stylesheets/components/main-layout.css';
 
 const MainLayout = ({ children, ...props }) => (
     <div>

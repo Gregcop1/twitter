@@ -4,10 +4,16 @@ import { connect } from 'react-redux';
 import { addTweet } from '../../actions';
 import ActionBar from './ActionBar';
 
-const Textarea = ({ addTweet, value, setValue, ...props }) => {
+const Textarea = ({ addTweet, onLeave, setValue, value, ...props }) => {
     const submit = () => {
         addTweet(value);
         setValue('');
+        blur(true);
+    },
+    blur = (force = false) => {
+        if (true === force || '' === value) {
+            onLeave();
+        }
     };
 
     return (
@@ -16,6 +22,7 @@ const Textarea = ({ addTweet, value, setValue, ...props }) => {
                 rows="3"
                 ref={(input) => this.input = input}
                 onChange={(e) => setValue(e.target.value)}
+                onBlur={blur}
                 value={value}
                 {...props}/>
             <ActionBar submit={ submit } length={ value.length || 0 } />
