@@ -1,30 +1,62 @@
 import React from 'react';
-import { branch, compose, renderComponent, renderNothing, withProps, withState } from 'recompose';
-import Input from './Input';
-import Textarea from './Textarea';
+import gravatarHelper from '../../helpers/gravatar';
+import ActionBar from './ActionBar';
 import '../../../stylesheets/components/writer-block.css';
 
-const input = ({ toggleFold, value }) => <Input value={value} onClick={() => toggleFold(x => (!x))} />;
-const textarea = ({ toggleFold, value }) => <Textarea placeholder={value} onLeave={() => toggleFold(x => (!x))} />;
+class Writer extends React.Component {
+    static defaultProps = {
+        user: {
+            name: 'Grégory Copin',
+            email: 'gregcop1@gmail.com',
+            account: '@gregcop1'
+        }
+    };
 
-const withToggle = withState('fold', 'toggleFold', true);
-const withPlaceholder = withProps(() => ({ value: 'Quoi de neuf ?' }))
-const switchFold = branch(
-    ({fold}) => fold,
-    renderComponent(input),
-    renderComponent(textarea),
-);
+    constructor(props) {
+        super(props);
+        this.state = {
+            fold: true,
+            value: ''
+        }
+    }
 
-const Content = compose(
-    withPlaceholder,
-    withToggle,
-    switchFold
-)(renderNothing());
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.fold !== this.state.fold) {
+            this.input.focus();
+        }
+    }
 
-const Writer = () => (
-    <div className="block writer-block">
-        <Content />
-    </div>
-);
+    toggleFold = () => {
+        this.setState({ fold: false });
+    };
+
+    changeValue = (event) => {
+        this.setState({ value: event.target.value });
+    };
+
+    render() {
+        const { user } = this.props;
+        const { fold, value } = this.state;
+
+        return (
+            <div className="block writer-block">
+                {fold && <div className="writer-block--fold">
+                    <img src={ gravatarHelper.getAvatar(user.email) } alt={user.name} className="avatar"/>
+                    <input type="text" onChange={() => undefined } onClick={this.toggleFold} value="Quoi de neuf ?"/>
+                    <i className="fa fa-picture-o"/>
+                </div>}
+
+                {!fold && <div className="writer-block--unfold">
+                    <textarea
+                        ref={(input) => this.input = input}
+                        rows="3"
+                        onChange={this.changeValue}
+                        placeholder="Quoi de neuf ?"/>
+                    <ActionBar length={ value.length || 0 } />
+                </div>}
+            </div>
+        );
+    }
+}
 
 export default Writer;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import gravatarHelper from '../../helpers/gravatar';
 import '../../../stylesheets/components/short-profile.css';
@@ -30,6 +29,15 @@ const ShortProfile = ({ user }) => (
     </div>
 );
 
-const mapStateToProps = ({tweets}) => ({ user: tweets.author });
+ShortProfile.defaultProps = {
+    user: {
+        name: 'Grégory Copin',
+        email: 'gregcop1@gmail.com',
+        account: '@gregcop1',
+        tweetCount: 500 + Math.ceil(Math.random() * 200),
+        subscriber: Math.ceil(Math.random() * 200),
+        subscription: Math.ceil(Math.random() * 200)
+    }
+};
 
-export default connect(mapStateToProps)(ShortProfile);
+export default ShortProfile;
