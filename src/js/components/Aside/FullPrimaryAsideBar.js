@@ -2,16 +2,16 @@ import React from 'react';
 import ShortProfile from './ShortProfile';
 import Trend from './Trend';
 
-const FullPrimaryAsideBar = () => (
+const FullPrimaryAsideBar = ({ showProfile }) => (
     <aside className="column aside-primary">
-        <ShortProfile/>
+        {showProfile && <ShortProfile/>}
         <Trend/>
     </aside>
 );
 
-export const withFullPrimaryAsideBar = (WrappedComponent) => (props) => (
+export const withFullPrimaryAsideBar = (showProfile) => (WrappedComponent) => (props) => (
     <div className="transparent-container">
-        <FullPrimaryAsideBar/>
+        <FullPrimaryAsideBar showProfile={showProfile}/>
         <WrappedComponent {...props}/>
     </div>
 );

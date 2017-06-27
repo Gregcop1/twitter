@@ -7,13 +7,13 @@ import List from '../List/List';
 
 const Home = ({ tweets }) => (
     <div className="column main-content">
-        <Writer />
+        <Writer placeholder="coucou" />
         <List />
     </div>
 );
 
 const enhance = compose(
-    withFullPrimaryAsideBar,
+    withFullPrimaryAsideBar(true),
     withFullSecondaryAsideBar
 );
 
