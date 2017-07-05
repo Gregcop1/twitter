@@ -1,9 +1,10 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { fetchTweetsSuccess, fetchTweetsFailure, FETCH_TWEETS } from '../actions';
+import { fetchTweets, fetchTweetsSuccess, fetchTweetsFailure, FETCH_TWEETS } from '../actions';
 import tweetsHelper from '../helpers/tweets';
 
-function* fetchTweets() {
+function* fetch() {
     try {
+        fetchTweets();
         const tweets = tweetsHelper.generateTweets(20);
         yield put(fetchTweetsSuccess(tweets));
     } catch (e) {
@@ -12,7 +13,7 @@ function* fetchTweets() {
 }
 
 function* mySaga() {
-    yield takeLatest(FETCH_TWEETS, fetchTweets)
+    yield takeLatest(FETCH_TWEETS, fetch)
 }
 
 export default mySaga;

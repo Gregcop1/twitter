@@ -13,6 +13,7 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "recompose": "^0.23.5",
+    "redux": "^3.7.1",
     "redux-saga": "^0.15.3"
   },
   "devDependencies": {
